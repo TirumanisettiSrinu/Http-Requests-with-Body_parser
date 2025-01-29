@@ -14,13 +14,8 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/public/index.html');
 });
 
-function bandNameGenerator(req, res, next) {
-  console.log(req.body);
+app.post('/submit',  (req, res) => {
   bandname = req.body["email"] +" "+ req.body["name"];
-  next();
-}
-
-app.post('/submit', bandNameGenerator, (req, res) => {
   console.log(req.body);
   res.send(`<h1>Your Gmail and name are: ${bandname}</h1>`);
 });
